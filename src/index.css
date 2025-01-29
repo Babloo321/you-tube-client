@@ -1,10 +1,41 @@
+:root {
+  --bg-dark: #1B1F38;
+  --text-dark: #A8DADC;
+
+  --bg-light: #D6E4F0;
+  --text-light: #6A0572;
+
+  --h1:36px;
+  --h2:24px;
+  --p:18px;
+  --b-text:15px;
+  --font-family:'Poppins', roboto, sans-serif;
+
+  --m-content:30px;
+  --p-btn-card:12px
+}
+
+/* Hide scrollbar for all browsers */
 body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and Opera */
+}
+
+
+body {
+  /* background-color: var(--bg-dark);
+  color: var(--text-dark); */
+  transition: background-color 0.3s ease, color 0.3s ease;
+
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+body.dark-mode {
+  background-color: var(--bg-light);
+  color: var(--text-light);
 }
 
 code {
