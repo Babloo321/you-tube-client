@@ -1,8 +1,9 @@
+
 .leftSidebar {
   position: fixed;
-  top: 60px; /* Height of the header */
+  top: 60px; 
   left: 0;
-  width: 200px; /* Width of the left sidebar */
+  width: 200px;
   height: calc(100% - 60px);
   background-color: var(--bg-dark);
   color: var(--text-dark);
@@ -50,7 +51,7 @@
   border-radius: 4px;
 }
 .signInButton:hover{
-  /* padding: 16px; */
+  
   background-color: #fff;
   color: #000;
   font: bold;
@@ -63,6 +64,7 @@
 
 .exploreSection ul {
   list-style-type: none;
+  text-decoration: none;
   margin: 0;
   padding: 0;
 }
@@ -72,6 +74,11 @@
   cursor: pointer;
   font-size: var(--p);
 }
-.exploreSection li:active, .menuSection li:active {
+.exploreSection li .activeLink:active, .menuSection li .activeLink:active {
   color: red;
+}
+
+.activeLink{
+  color: var(--text-dark);
+  text-decoration: none;
 }
