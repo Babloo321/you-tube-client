@@ -1,0 +1,73 @@
+.modal {
+  position: fixed;
+  top: 100px;
+  /* left: 600px; */
+  right: 10px;
+  width: 360px;
+  height: 300px;
+  /* background: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: var(--bg-dark);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--bg-light);
+  width: 350px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+h2,.label{
+  color: var(--text-dark);
+}
+.label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: var(--p);
+}
+
+input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: var(--p);
+  font-family: var(--p);
+}
+
+.submitButton {
+  width: 100%;
+  padding: 15px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitButton:disabled {
+  background-color: #a0c4ff;
+  cursor: not-allowed;
+}
+
+.closeButton {
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}

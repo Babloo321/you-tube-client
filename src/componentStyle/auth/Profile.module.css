@@ -1,0 +1,113 @@
+
+
+ /* Modal Styling */
+ .modal {
+  position: fixed;
+  top: 70px;
+  right: 25px;
+  width: 300px; 
+  max-width: 400px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.modalContent {
+  background: var(--bg-light);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--bg-light);
+  width: 100%;
+  max-height: 90vh; 
+  overflow-y: auto;
+  scrollbar-width: none;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Header */
+
+
+/* Profile List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profileDetails li {
+  font-size: 16px;
+  margin: 10px;
+  color: #333;
+  text-align: left;
+}
+
+/* Avatar Image */
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 10%; /* Makes the image circular */
+  object-fit: cover;
+  border: 2px solid #6A0572;
+  display: block;
+  margin: 10px auto;
+}
+
+/* Close Button */
+.closeButton {
+  margin-top: 15px;
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+.closeButton:hover {
+  background-color: darkred;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 8px 0;
+}
+.profileDetails .userDetails{
+  display: flex;
+  flex-direction: row;
+}
+.channels{
+  border: none;
+  background-color: var(--bg-light);
+  color: navy;
+  font-weight: 600;
+  text-decoration: underline;
+  font-family: var(--font-family);
+  cursor: pointer;
+}
+.logoutButton{
+  margin-top: 15px;
+  background-color: var(--bg-dark);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 90%;
+  transition: background 0.3s ease-in-out;
+}
+.logoutButton:hover{
+  background-color: navy;
+}
+.logoutButton:active{
+  background-color: red;
+  cursor: progress;
+}

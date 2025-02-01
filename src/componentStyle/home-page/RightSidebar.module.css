@@ -1,6 +1,6 @@
-.rightSidebar {
+/* .rightSidebar {
   position: fixed;
-  top: 60px; /* Height of the header */
+  top: 60px; 
   right: 0;
   width: 85%;
   height: 50px;
@@ -33,4 +33,73 @@
 .linkContainer li:hover{
   background-color: var(--text-dark);
   color: var(--bg-dark);
+} */
+
+/* Fix the right sidebar layout */
+.rightSidebar {
+  position: fixed;
+  top: 80px; /* Height of the header */
+  right: 0;
+  width: calc(100% - 200px); /* Avoid overlap with left sidebar */
+  min-height: 60px; /* Ensure it is tall enough */
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  overflow-y: hidden; /* Prevent vertical overflow */
+  padding: 10px 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Prevent content from wrapping */
+}
+
+/* Ensure the link container behaves correctly */
+.linkContainer {
+  width: 100%;
+  overflow-x: auto; /* Allows scrolling if content overflows */
+  white-space: nowrap;
+}
+
+/* Style the unordered list inside the link container */
+.linkContainer ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping of items */
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between items */
+  margin: 0;
+}
+
+/* Style each link item */
+.linkContainer li {
+  background-color: var(--text-light);
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: var(--p);
+  letter-spacing: 1.5px;
+  white-space: nowrap; /* Prevent text from breaking */
+  transition: background 0.3s ease-in-out;
+}
+
+.linkContainer li:hover {
+  background-color: var(--text-dark);
+  color: var(--bg-dark);
+}
+
+/* Hide scrollbar but allow scrolling (for WebKit browsers) */
+.linkContainer::-webkit-scrollbar {
+  height: 5px;
+}
+
+.linkContainer::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.linkContainer:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
 }

@@ -1,6 +1,6 @@
-.mainContent {
+/* .mainContent {
   margin-top: 150px;
-  margin-left: 240px; /* Width of the left sidebar */
+  margin-left: 240px; 
   min-height: calc(100vh - 140px);
   background-color: var(--bg-dark);
   color: var(--text-dark);
@@ -21,7 +21,6 @@
   max-width: 450px;
   height: 100%;
   max-height: 300px;
-  /* border: 1px solid #ddd; */
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -36,12 +35,12 @@
 .thumbnail {
   width: 100%;
   max-width: 450px;
-  height: 300px; /* Adjust height as needed */
+  height: 300px;
   display: block;
 }
 
 .info {
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.6); 
   color: var(--text-dark);
   position: absolute;
   bottom: 0;
@@ -57,7 +56,6 @@
 .description {
   font-size: var(--p);
   color: var(--text-dark);
-  /* display: none;  */
 }
 
 .link {
@@ -72,7 +70,6 @@
   max-width: 350px;
   height: 100%;
   max-height: 450px;
-  /* border: 1px solid #ddd; */
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -87,6 +84,111 @@
 .trandingthumbnail {
   width: 100%;
   max-width: 350px;
-  height: 450px; /* Adjust height as needed */
+  height: 450px; 
+  display: block;
+} */
+
+/* Ensure main content aligns properly with the left sidebar */
+.mainContent {
+  margin-top: 140px;
+  margin-left: 200px; /* Match the exact width of .leftSidebar */
+  min-height: calc(100vh - 140px);
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  overflow: hidden; /* Allow scrolling when content overflows */
+  padding: var(--m-content);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cards should wrap properly instead of overflowing */
+.card {
+  display: flex;
+  flex-wrap: wrap; /* Allow videos to wrap instead of overflowing */
+  gap: 16px;
+  justify-content: center;
+  margin: 22px 0;
+  overflow: visible; /* Prevent content from being cut off */
+}
+
+/* Ensure videos scale properly within the card */
+.video {
+  width: 100%;
+  max-width: 450px;
+  height: auto; /* Allow height to adjust dynamically */
+  max-height: 300px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.video:hover {
+  transform: scale(1.05);
+}
+
+/* Ensure thumbnail fits correctly */
+.thumbnail {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  max-width: 450px;
+  max-height: 300px;
   display: block;
 }
+
+/* Video info section */
+.info {
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  color: var(--text-dark);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  padding: 8px;
+}
+
+/* Video titles */
+.title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.description {
+  font-size: var(--p);
+  color: var(--text-dark);
+}
+
+/* Link styling */
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Fix Trending Video Section */
+.trandingvideo {
+  width: 100%;
+  max-width: 350px;
+  height: auto; /* Dynamic height */
+  max-height: 450px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.trandingvideo:hover {
+  transform: scale(1.05);
+}
+
+/* Trending video thumbnails */
+.trandingthumbnail {
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+  max-height: 450px;
+  display: block;
+}
+
