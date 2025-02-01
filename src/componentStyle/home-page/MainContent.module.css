@@ -103,29 +103,3 @@
   font-size: 1.2rem;
   margin-bottom: 5px;
 }
-
-/* Slider Navigation Buttons */
-.slideButton {
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  padding: 10px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-
-.slideButton:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.slideButton:first-of-type {
-  left: 0;
-}
-
-.slideButton:last-of-type {
-  right: 0;
-}

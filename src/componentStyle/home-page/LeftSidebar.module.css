@@ -25,24 +25,19 @@ body {
 
 .leftSidebar {
   position: fixed;
-  top: 60px; 
+  top: 82px; 
   left: 0;
   width: 200px;
-  height: calc(100vh - 60px); /* Ensure it takes full height */
+  height: calc(100vh - 82px);
   background-color: var(--bg-dark);
   color: var(--text-dark);
-  overflow-y: auto; /* Enable scrolling for sidebar */
+  overflow-y: auto;
   padding: 20px;
-  
-  /* Right border with 30% opacity */
   border-right: 1px solid rgba(255, 255, 255, 0.3);
-  
-  /* Top border with 30% opacity */
-  border-top: 1px solid rgba(255, 0, 0, 0.3);
-
-  /* Custom scrollbar */
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   scrollbar-width: thin; 
   scrollbar-color: transparent transparent;
+  z-index: 10;
 }
 
 /* Main Content */

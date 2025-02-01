@@ -6,6 +6,7 @@ body {
 
 body::-webkit-scrollbar {
   display: none;  /* Chrome, Safari, and Opera */
+  background-color: var(--bg-dark);
 }
 .App{
   overflow: hidden;

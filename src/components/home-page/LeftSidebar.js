@@ -8,12 +8,14 @@ import { CgProfile } from "react-icons/cg";
 import { FaHistory } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { RiVideoAddFill } from "react-icons/ri";
-
+import UploadVideo from "./uploadVideo/UploadVideo";
 const LeftSidebar = () => {
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [token,setToken] = useState(null);
   useEffect(() =>{
     setToken(localStorage.getItem("accessToken"));
   },[])
+
   return (
     <aside className={styles.leftSidebar}>
       <div className={styles.menuSection}>
@@ -53,7 +55,7 @@ const LeftSidebar = () => {
     {
       token ? (
         <div className={styles.addVideo}>
-        <button className={styles.addVideoButton}><RiVideoAddFill className={styles.icon} />&nbsp;&nbsp;Upload</button>
+        <button className={styles.addVideoButton} onClick={() => setIsUploadOpen(true)}><RiVideoAddFill className={styles.icon} />&nbsp;&nbsp;Upload</button>
         </div>
       ) : (
         <div className={styles.signInSection}>
@@ -79,6 +81,7 @@ const LeftSidebar = () => {
           </li>
         </ul>
       </div>
+      {isUploadOpen && <UploadVideo isOpen={isUploadOpen} onClose={() => setIsUploadOpen(false)} />}
     </aside>
   );
 };

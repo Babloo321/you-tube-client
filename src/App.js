@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     setIsAuthenticated(!!localStorage.getItem("accessToken"));
-  }, []);
+  }, [isAuthenticated]);
 
   // ✅ Private Route: Redirects if user is NOT authenticated
   const PrivateRoute = ({ element }) => {

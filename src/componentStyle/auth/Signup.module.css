@@ -2,7 +2,7 @@
 
 .modal {
   position: fixed;
-  top: 60px;
+  top: 80px;
   right: 5px;
   width: 360px; /* Fixed width */
   max-width: 400px;
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 11;
   overflow: hidden; /* Prevent scrolling */
 }
 

@@ -1,0 +1,74 @@
+/* Overlay to darken background */
+.overlay {
+  position: fixed;
+  top: 80px;
+  left: 45%;
+  min-width: 300px;
+  height: auto;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Modal Box */
+.modal {
+  width: 300px;
+  background: var(--bg-light);
+  /* color: var(--bg-dark); */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+h2{
+  color: var(--bg-dark);
+}
+
+/* Form Fields */
+.form input,
+.form textarea {
+  min-width: 100%;
+  max-width: auto;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #222;
+  color: var(--bg-light);
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+button[type="submit"] {
+  background: green;
+  color: var(--bg-light);
+}
+
+button[type="submit"]:disabled {
+  background: gray;
+}
+
+.closeBtn {
+  background: red;
+  color: var(--bg-light);
+}
+.error{
+  color: red;
+}
+label{
+  display: block;
+  text-align: left;
+  transform: translateY(8px);
+  color: var(--bg-dark);
+  font-size: 1.2rem;
+}
