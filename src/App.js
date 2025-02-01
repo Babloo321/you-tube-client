@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 import Header from "./components/home-page/Header.js";
@@ -38,6 +40,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/channel" element={<PrivateRoute element={<Channels />} />} />
         </Routes>
+        <ToastContainer position="top-right" autoClose={3000} />
       </div>
     </Provider>
   );

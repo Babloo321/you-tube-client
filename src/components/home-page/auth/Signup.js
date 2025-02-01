@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "../../../componentStyle/auth/Signup.module.css";
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { handleError, handleSuccess } from '../../../utlis.js';
 const Signup = ({ onClose }) => {
   const [formData, setFormData] = useState({
     userName: "",
@@ -42,7 +44,9 @@ const Signup = ({ onClose }) => {
       // Append file fields
       if (formData.avatar) {
         formDataToSend.append("avatar", formData.avatar); // Attach file directly
-      } 
+      }else{
+        handleError("Please select an avatar");
+      }
   
       if (formData.coverImage) {
         formDataToSend.append("coverImage", formData.coverImage);
@@ -57,10 +61,11 @@ const Signup = ({ onClose }) => {
           },
         }
       );
-  
-      console.log("Signup Success:", response.data);
-      alert("Signup Successful!");
-  
+      handleSuccess("User Registeration is in processing, Please wait...");
+      setTimeout(() => {
+        navigate("/login");
+        onClose();
+      }, 1000);
       // Clear form after submission
       setFormData({
         userName: "",
@@ -70,12 +75,11 @@ const Signup = ({ onClose }) => {
         avatar: null,
         coverImage: null,
       });
-  
-      onClose(); // Close the popup
-      navigate("/login");
+
     } catch (err) {
       console.error("Signup Error:", err.response?.data || err.message);
       setError(err.response?.data?.message || "Something went wrong. Please try again.");
+      handleError(err.response?.data?.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -127,6 +131,7 @@ const Signup = ({ onClose }) => {
         {/* Close Button */}
         <button className={styles.closeButton} onClick={onClose}>Close</button>
       </div>
+      <ToastContainer />
     </div>
   );
 };
