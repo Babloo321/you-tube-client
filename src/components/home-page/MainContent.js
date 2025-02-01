@@ -1,112 +1,93 @@
-import React, { useEffect, useState } from "react";
-import styles from "../../componentStyle/home-page/MainContent.module.css";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import styles from "../../componentStyle/home-page/MainContent.module.css";
 
 const MainContent = ({ activeCategory }) => {
-  const [shorts, setShorts] = useState(null);
-  // const [trending, setTrending] = useState(null);
+  const [shorts, setShorts] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchShorts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/api/v1/shortsAndTranding/shorts"
-        );
-        setShorts(response.data);
+        const response = await axios.get("http://localhost:8000/api/v1/shortsAndTranding/shorts");
+        setShorts(response.data.data || []);
       } catch (error) {
-        console.error("Error fetching data", error);
+        console.error("Error fetching shorts videos:", error);
       }
     };
-    fetchData();
+
+    const fetchTrending = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/v1/shortsAndTranding/tranding");
+        setTrending(response.data.data || []);
+      } catch (error) {
+        console.error("Error fetching trending videos:", error);
+      }
+    };
+
+    fetchShorts();
+    fetchTrending();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:8000/api/v1/shortsAndTranding/tranding"
-  //       );
-  //       setTrending(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching data", error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  // Scroll Slider
+  const slideLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft -= 400;
+    }
+  };
 
-  const showShortsVideos = () => (
-    <div className={styles.card}>
-      {shorts ? (
-        shorts.data.map((short,index) => (
-          <div key={index} className={styles.video}>
-            <a
-              href={short.videoFile}
-              className={styles.link}
-              target="_self"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={short.thumbnail}
-                alt={short.title}
-                className={styles.thumbnail}
-              />
-              <div className={styles.info}>
-                <h2 className={styles.title}>{short.title}</h2>
-                <p className={styles.description}>{short.description}</p>
-              </div>
-            </a>
-          </div>
-        ))
-      ) : (
-        <div>No more videos</div>
-      )}
-    </div>
-  );
-
-  // const showTrendingVideos = () => (
-  //   <div className={styles.card}>
-  //     {trending ? (
-  //       trending.data.map((short) => (
-  //         <div key={short.id} className={styles.trendingVideo}>
-  //           <a
-  //             href={short.videoFile}
-  //             className={styles.link}
-  //             target="_self"
-  //             rel="noopener noreferrer"
-  //           >
-  //             <img
-  //               src={short.thumbnail}
-  //               alt={short.title}
-  //               className={styles.trendingThumbnail}
-  //             />
-  //             <div className={styles.info}>
-  //               <h2 className={styles.title}>{short.title}</h2>
-  //               <p className={styles.description}>{short.description}</p>
-  //             </div>
-  //           </a>
-  //         </div>
-  //       ))
-  //     ) : (
-  //       <div>No more videos</div>
-  //     )}
-  //   </div>
-  // );
+  const slideRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft += 400;
+    }
+  };
 
   return (
     <main className={styles.mainContent}>
-      {activeCategory === "All" && (
+      {/* Shorts Videos (3 in a Row) */}
+      {activeCategory === "All" || activeCategory === "Shorts" ? (
         <>
-          {showShortsVideos()}
-          <h1>Trending</h1>
-          {showShortsVideos()}
-          {/* {showTrendingVideos()} */}
+          <h2>{""}</h2>
+          <div className={styles.shortsContainer}>
+            {shorts.slice(0, 3).map((short, index) => (
+              <div key={index} className={styles.videoCard}>
+                <a href={short.videoFile} target="_self" rel="noopener noreferrer">
+                  <img src={short.thumbnail} alt={short.title} className={styles.thumbnail} />
+                  <div className={styles.videoInfo}>
+                    <h3>{short.title}</h3>
+                    <p>{short.description}</p>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
         </>
-      )}
-      {activeCategory === "Shorts" && showShortsVideos()}
-      {activeCategory === "Trending" && showShortsVideos()}
-      {activeCategory === "Music" && <h1>Music Content Coming Soon...</h1>}
-      {activeCategory === "News" && <h1>News Content Coming Soon...</h1>}
-      {activeCategory === "Videos" && <h1>Video Content Coming Soon...</h1>}
+      ) : null}
+
+      {/* Trending Videos (Slider) */}
+      {activeCategory === "All" || activeCategory === "Trending" ? (
+        <>
+          <h2>Trending</h2>
+          <div className={styles.trendingContainer}>
+            <button className={styles.slideButton} onClick={slideLeft}>❮</button>
+            <div className={styles.trendingSlider} ref={sliderRef}>
+              {trending.map((trend, index) => (
+                <div key={index} className={styles.trendingVideoCard}>
+                  <a href={trend.videoFile} target="_self" rel="noopener noreferrer">
+                    <img src={trend.thumbnail} alt={trend.title} className={styles.trendingThumbnail} />
+                    <div className={styles.trendingInfo}>
+                      <h3>{trend.title}</h3>
+                      <p>{trend.description}</p>
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
+            <button className={styles.slideButton} onClick={slideRight}>❯</button>
+          </div>
+        </>
+      ) : null}
     </main>
   );
 };
